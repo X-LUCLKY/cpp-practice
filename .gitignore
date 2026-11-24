@@ -1,0 +1,47 @@
+# ===== C++ / 编译产物 =====
+build/
+cmake-build-*/
+*.exe
+*.dll
+*.o
+*.obj
+*.out
+*.ilk
+*.pdb
+CMakeFiles/
+CMakeCache.txt
+
+# ===== Python =====
+__pycache__/
+*.py[cod]
+venv/
+.venv/
+env/
+.ipynb_checkpoints/
+*.egg-info/
+.conda/
+
+# ===== 数据与输出（体积大，不入库）=====
+data/
+outputs/
+*.csv
+*.npy
+*.npz
+*.pth
+*.pt
+*.ckpt
+*.log
+
+# ===== 密钥与环境变量（绝对不能提交）=====
+.env
+.env.*
+secrets.json
+*.pem
+
+# ===== 编辑器与系统 =====
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
+desktop.ini
