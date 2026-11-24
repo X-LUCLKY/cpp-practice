@@ -1,3 +1,6 @@
-//
-// Created by X.Lucky on 2026/11/24.
-//
+#include <iostream>
+
+int main() {
+    std::cout << "w1: function practice works!" << std::endl;
+    return 0;
+}
