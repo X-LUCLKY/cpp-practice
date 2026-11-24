@@ -1,17 +1,17 @@
-# cpp-practice：一个仓库，多个练习目标
+# cpp-practice：自动扫描 practices/<练习名>/main.cpp，无需手工添加目标
 cmake_minimum_required(VERSION 3.20)
 project(cpp_practice CXX)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
-# ---- 每个练习一个可执行文件（一个 target 只能包一个带 main 的文件）----
-add_executable(w1_function practices/w1_function/main1.cpp)
+file(GLOB PRACTICE_MAINS CONFIGURE_DEPENDS
+     "${CMAKE_CURRENT_SOURCE_DIR}/practices/*/main.cpp")
 
-# 备用/实验文件，需要时取消下面这行注释，并确保该文件里有 main()
-# add_executable(w1_function_2 practices/w1_function/main2.cpp)
-
-# 以后新增练习的写法：
-# add_executable(w2_loop practices/w2_loop/main.cpp)
+foreach(src IN LISTS PRACTICE_MAINS)
+  get_filename_component(dir "${src}" DIRECTORY)
+  get_filename_component(folder "${dir}" NAME)
+  add_executable(${folder} "${src}")
+  message(STATUS "practice target: ${folder}  <-  ${src}")
+endforeach()
